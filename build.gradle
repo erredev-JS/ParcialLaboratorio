@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.hibernate:hibernate-core:5.5.7.Final'
+    // Otras dependencias
+    implementation 'com.h2database:h2:1.4.200'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+}
+task Main(type: JavaExec) {
+    // Define la clase principal para ejecutar
+    main = 'org.example.Main'
+
+    // Especifica la clasepath para la tarea
+    classpath = sourceSets.main.runtimeClasspath
+
+
+}
