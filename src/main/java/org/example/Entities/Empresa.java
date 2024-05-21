@@ -20,7 +20,7 @@ public class Empresa implements Serializable {
     private Integer cuil;
 
     // Relaciones
-
+    @OneToMany
     private ArrayList<Sucursal> sucursalArrayList;
 
     //  Constructores
@@ -62,7 +62,13 @@ public class Empresa implements Serializable {
         this.cuil = cuil;
     }
 
+    public ArrayList<Sucursal> getSucursalArrayList() {
+        return sucursalArrayList;
+    }
 
+    public void setSucursalArrayList(ArrayList<Sucursal> sucursalArrayList) {
+        this.sucursalArrayList = sucursalArrayList;
+    }
     // Metodos
 
 

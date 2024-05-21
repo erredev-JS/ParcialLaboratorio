@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.Entities.DetallePedido;
-import org.example.Entities.Factura;
-import org.example.Entities.Pedido;
+import org.example.Entities.*;
 import org.example.Entities.enums.Estado;
 import org.example.Entities.enums.FormaPago;
 import org.example.Entities.enums.TipoEnvio;
@@ -41,19 +39,20 @@ try {
     // Hasta aca
 
 
-
+    // instanciando pedido
     Pedido pedido = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
 
-
+    // instanciando detalle pedido
     DetallePedido dp1 = new DetallePedido(2, 5000.0);
     DetallePedido dp2 = new DetallePedido(1, 999.9);
     entityManager.persist(dp1);
     entityManager.persist(dp2);
 
 
-
+    // instanciando factura
     Factura factura = new Factura(LocalDate.of(2024, 5, 20),10002350, 100000235, "No se que es este espacio", "Plata o plomo", FormaPago.EFECTIVO, 5999.9);
     entityManager.persist(factura);
+
 
     pedido.getDetallePedidos().add(dp1);
     pedido.getDetallePedidos().add(dp2);
@@ -61,6 +60,25 @@ try {
 
 
     entityManager.persist(pedido);
+
+
+    Pais pais1 = new Pais("Argentina");
+    Provincia provincia1 = new Provincia("Mendoza");
+    Localidad localidad1 = new Localidad("Godoy Cruz", provincia1);
+    Domicilio domicilio1 = new Domicilio("Bernardo Ortiz", 1345, 5501, localidad1);
+    Sucursal panaderia = new Sucursal("Jebbs", LocalTime.of(8,0),LocalTime.of(20,30),false, domicilio1);
+    Empresa empresa1 = new Empresa("Pan","Vender Ricos Panes", 123231123);
+
+
+    empresa1.agregarSucursal(panaderia);
+    panaderia.setEmpresaCentral(empresa1);
+
+    entityManager.persist(pais1);
+    entityManager.persist(provincia1);
+    entityManager.persist(localidad1);
+    entityManager.persist(domicilio1);
+    entityManager.persist(panaderia);
+    entityManager.persist(empresa1);
 
     entityManager.getTransaction().commit();
 

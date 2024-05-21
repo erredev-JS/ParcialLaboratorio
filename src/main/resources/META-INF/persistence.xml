@@ -8,6 +8,7 @@
         <class>org.example.Entities.Pedido</class>
         <class>org.example.Entities.Factura</class>
         <class>org.example.Entities.DetallePedido</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>

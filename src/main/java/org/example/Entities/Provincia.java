@@ -27,6 +27,10 @@ public class Provincia implements Serializable {
         this.pais = pais;
     }
 
+    public Provincia(String nombre) {
+        this.nombre = nombre;
+    }
+
     // Getter´s and Setter´s
 
     public Long getId() {
@@ -39,5 +43,13 @@ public class Provincia implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 }

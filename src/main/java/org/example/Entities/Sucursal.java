@@ -22,7 +22,10 @@ public class Sucursal implements Serializable {
 
     // Relacion
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilioSucursal;
+    @ManyToOne
     private Empresa empresaCentral;
 
     // Constructores
@@ -44,6 +47,7 @@ public class Sucursal implements Serializable {
         this.casaMatriz = casaMatriz;
         this.domicilioSucursal = domicilioSucursal;
     }
+
 
     // Getter´s and Setter´s
 
@@ -81,5 +85,21 @@ public class Sucursal implements Serializable {
 
     public void setCasaMatriz(Boolean casaMatriz) {
         this.casaMatriz = casaMatriz;
+    }
+
+    public Domicilio getDomicilioSucursal() {
+        return domicilioSucursal;
+    }
+
+    public void setDomicilioSucursal(Domicilio domicilioSucursal) {
+        this.domicilioSucursal = domicilioSucursal;
+    }
+
+    public Empresa getEmpresaCentral() {
+        return empresaCentral;
+    }
+
+    public void setEmpresaCentral(Empresa empresaCentral) {
+        this.empresaCentral = empresaCentral;
     }
 }
