@@ -3,6 +3,7 @@ package org.example.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Domicilio")
@@ -17,12 +18,17 @@ public class Domicilio implements Serializable {
     private Integer numero;
     private Integer cp;
 
+    // Relaciones
+
+    private Localidad localidad;
+
     // Constructores
 
-    public Domicilio(String calle, Integer numero, Integer cp) {
+    public Domicilio(String calle, Integer numero, Integer cp, Localidad localidad) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
+        this.localidad = localidad;
     }
 
     // Getter´s and Setter´s

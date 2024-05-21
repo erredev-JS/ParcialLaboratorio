@@ -16,10 +16,15 @@ public class Provincia implements Serializable {
 
     private String nombre;
 
+    // Relaciones
+
+    private Pais pais;
+
     // Constructores
 
-    public Provincia(String nombre) {
+    public Provincia(String nombre, Pais pais) {
         this.nombre = nombre;
+        this.pais = pais;
     }
 
     // Getter´s and Setter´s

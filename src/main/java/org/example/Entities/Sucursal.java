@@ -20,15 +20,29 @@ public class Sucursal implements Serializable {
     private LocalTime horarioCierre;
     private Boolean casaMatriz;
 
+    // Relacion
+
+    private Domicilio domicilioSucursal;
+    private Empresa empresaCentral;
 
     // Constructores
 
 
-    public Sucursal(String nombre, LocalTime horarioApertura, LocalTime horarioCierre, Boolean casaMatriz) {
+    public Sucursal(String nombre, LocalTime horarioApertura, LocalTime horarioCierre, Boolean casaMatriz, Domicilio domicilioSucursal, Empresa empresaCentral) {
         this.nombre = nombre;
         this.horarioApertura = horarioApertura;
         this.horarioCierre = horarioCierre;
         this.casaMatriz = casaMatriz;
+        this.domicilioSucursal = domicilioSucursal;
+        this.empresaCentral = empresaCentral;
+    }
+
+    public Sucursal(String nombre, LocalTime horarioApertura, LocalTime horarioCierre, Boolean casaMatriz, Domicilio domicilioSucursal) {
+        this.nombre = nombre;
+        this.horarioApertura = horarioApertura;
+        this.horarioCierre = horarioCierre;
+        this.casaMatriz = casaMatriz;
+        this.domicilioSucursal = domicilioSucursal;
     }
 
     // Getter´s and Setter´s

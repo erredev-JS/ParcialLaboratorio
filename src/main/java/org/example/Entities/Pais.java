@@ -4,29 +4,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Localidad")
-public class Localidad implements Serializable {
+@Table(name = "Pais")
+public class Pais implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
 
     // Atributos
 
     private String nombre;
 
-    // Relaciones
-
-    private Provincia provincia;
-
     // Constructores
 
-    public Localidad(String nombre, Provincia provincia) {
+
+    public Pais(String nombre) {
         this.nombre = nombre;
-        this.provincia = provincia;
     }
 
     // Getter´s and Setter´s
+
 
     public Long getId() {
         return id;

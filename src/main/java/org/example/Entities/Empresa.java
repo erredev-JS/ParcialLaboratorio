@@ -19,20 +19,21 @@ public class Empresa implements Serializable {
 
     private Integer cuil;
 
-    // NO SE
+    // Relaciones
 
-    // private ArrayList<Sucursal> sucursalArrayList = new ArrayList<Sucursal>();
+    private ArrayList<Sucursal> sucursalArrayList;
 
     //  Constructores
 
     public Empresa(String nombre, String razonSocial, Integer cuil) {
+        this.sucursalArrayList = new ArrayList<>();
         this.nombre = nombre;
         this.razonSocial = razonSocial;
         this.cuil = cuil;
     }
 
-
     // Getter´s and Setter´s
+
     public Long getId(){
         return id;
     }
@@ -64,9 +65,9 @@ public class Empresa implements Serializable {
 
     // Metodos
 
-    /*
+
     public void agregarSucursal(Sucursal sucursal){
         sucursalArrayList.add(sucursal);
     }
-    */
+
 }
