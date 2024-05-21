@@ -27,7 +27,7 @@ public class Pedido implements Serializable {
     private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();
 
 
-    //Atributos
+    // Atributos
     private LocalTime horaEstimadaFinalizacion;
     private Double total;
     private Estado estado;
@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
-    //constructores
+    // Constructores
     public Pedido(LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido) {
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
         this.total = total;
@@ -55,8 +55,11 @@ public class Pedido implements Serializable {
         this.fechaPedido = fechaPedido;
     }
 
-    //Setters y Getters
+    // Getter´s and Setter´s
 
+    public Long getId() {
+        return id;
+    }
     public List<DetallePedido> getDetallePedidos() {
         return detallePedidos;
     }

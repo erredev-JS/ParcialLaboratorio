@@ -10,14 +10,22 @@ public class DetallePedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    // Atributos
+
     private Integer cantidad;
     private Double subTotal;
+
+    // Constructores
 
     public DetallePedido(Integer cantidad, Double subTotal) {
         this.cantidad = cantidad;
         this.subTotal = subTotal;
     }
 
+    // Getter´s and Setter´s
+    public Long getId() {
+        return id;
+    }
     public Integer getCantidad() {
         return cantidad;
     }

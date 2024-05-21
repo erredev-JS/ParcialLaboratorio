@@ -19,16 +19,13 @@ public class Domicilio implements Serializable {
 
     // Constructores
 
-
     public Domicilio(String calle, Integer numero, Integer cp) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
     }
 
-
     // Getter´s and Setter´s
-
 
     public Long getId() {
         return id;

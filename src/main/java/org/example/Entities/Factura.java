@@ -11,7 +11,11 @@ import java.time.LocalDate;
 public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
+
+    // Atributos
+
     private LocalDate fechaFacturacion;
     private Integer mpPaymentId;
     private Integer mpMerchantOrderId;
@@ -19,6 +23,8 @@ public class Factura implements Serializable {
     private String mpPaymentType;
     private FormaPago formaPago;
     private Double totalVenta;
+
+    // Constructores
 
     public Factura(LocalDate fechaFacturacion, Integer mpPaymentId, Integer mpMerchantOrderId, String mpPreferenceId, String mpPaymentType, FormaPago formaPago, Double totalVenta) {
         this.fechaFacturacion = fechaFacturacion;
@@ -28,6 +34,12 @@ public class Factura implements Serializable {
         this.mpPaymentType = mpPaymentType;
         this.formaPago = formaPago;
         this.totalVenta = totalVenta;
+    }
+
+    // Getter´s and Setter´s
+
+    public Long getId() {
+        return id;
     }
 
     public LocalDate getFechaFacturacion() {

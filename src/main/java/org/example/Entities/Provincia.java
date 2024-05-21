@@ -3,11 +3,12 @@ package org.example.Entities;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Entity
-@Table(name = "Localidad")
-public class Localidad implements Serializable {
+@Table(name = "Provincia")
+public class Provincia implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
 
     private Long id;
 
@@ -17,7 +18,7 @@ public class Localidad implements Serializable {
 
     // Constructores
 
-    public Localidad(String nombre) {
+    public Provincia(String nombre) {
         this.nombre = nombre;
     }
 
