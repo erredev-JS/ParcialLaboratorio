@@ -1,8 +1,17 @@
 package org.example;
 
+import org.example.Entities.DetallePedido;
+import org.example.Entities.Factura;
+import org.example.Entities.Pedido;
+import org.example.Entities.enums.Estado;
+import org.example.Entities.enums.FormaPago;
+import org.example.Entities.enums.TipoEnvio;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Main {
 
@@ -24,6 +33,26 @@ try {
     person.setAge(30);
 
     entityManager.persist(person);
+
+    Pedido pedido = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
+
+
+    DetallePedido dp1 = new DetallePedido(2, 5000.0);
+    DetallePedido dp2 = new DetallePedido(1, 999.9);
+    entityManager.persist(dp1);
+    entityManager.persist(dp2);
+
+
+
+    Factura factura = new Factura(LocalDate.of(2024, 5, 20),10002350, 100000235, "No se que es este espacio", "Plata o plomo", FormaPago.EFECTIVO, 5999.9);
+    entityManager.persist(factura);
+
+    pedido.getDetallePedidos().add(dp1);
+    pedido.getDetallePedidos().add(dp2);
+    pedido.setFactura(factura);
+
+
+    entityManager.persist(pedido);
 
     entityManager.getTransaction().commit();
 
