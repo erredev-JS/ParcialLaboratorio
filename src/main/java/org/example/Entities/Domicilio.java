@@ -2,10 +2,11 @@ package org.example.Entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Domicilio")
-public class Domicilio {
+public class Domicilio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
