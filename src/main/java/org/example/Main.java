@@ -23,6 +23,10 @@ public class Main {
 
 
 try {
+
+    // Ejemplo de profe
+
+
     // Persistir una nueva entidad Person
     entityManager.getTransaction().begin();
 
@@ -33,6 +37,10 @@ try {
     person.setAge(30);
 
     entityManager.persist(person);
+
+    // Hasta aca
+
+
 
     Pedido pedido = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
 
