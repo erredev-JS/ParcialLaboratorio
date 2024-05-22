@@ -8,6 +8,12 @@
         <class>org.example.Entities.Pedido</class>
         <class>org.example.Entities.Factura</class>
         <class>org.example.Entities.DetallePedido</class>
+        <class>org.example.Entities.Empresa</class>
+        <class>org.example.Entities.Sucursal</class>
+        <class>org.example.Entities.Domicilio</class>
+        <class>org.example.Entities.Localidad</class>
+        <class>org.example.Entities.Provincia</class>
+        <class>org.example.Entities.Pais</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
