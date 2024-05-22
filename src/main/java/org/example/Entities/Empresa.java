@@ -20,7 +20,7 @@ public class Empresa implements Serializable {
     private Integer cuil;
 
     // Relaciones
-    @OneToMany
+    @OneToMany(mappedBy = "empresaCentral",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Sucursal> sucursalArrayList;
 
     //  Constructores
@@ -32,6 +32,12 @@ public class Empresa implements Serializable {
         this.cuil = cuil;
     }
 
+    public Empresa(String nombre, String razonSocial, Integer cuil, ArrayList<Sucursal> sucursalArrayList) {
+        this.sucursalArrayList = sucursalArrayList;
+        this.nombre = nombre;
+        this.razonSocial = razonSocial;
+        this.cuil = cuil;
+    }
     // Getter´s and Setter´s
 
     public Long getId(){

@@ -17,7 +17,8 @@ public class Provincia implements Serializable {
     private String nombre;
 
     // Relaciones
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_pais")
     private Pais pais;
 
     // Constructores

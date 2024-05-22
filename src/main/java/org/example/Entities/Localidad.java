@@ -16,7 +16,8 @@ public class Localidad implements Serializable {
     private String nombre;
 
     // Relaciones
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_provincia")
     private Provincia provincia;
 
     // Constructores

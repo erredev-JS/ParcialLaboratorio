@@ -25,7 +25,8 @@ public class Sucursal implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilioSucursal;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_empresaCentral")
     private Empresa empresaCentral;
 
     // Constructores

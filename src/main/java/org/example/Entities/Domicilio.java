@@ -19,7 +19,8 @@ public class Domicilio implements Serializable {
     private Integer cp;
 
     // Relaciones
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_localidad")
     private Localidad localidad;
 
     // Constructores
