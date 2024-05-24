@@ -40,11 +40,14 @@ try {
 
 
     // instanciando pedido
-    Pedido pedido = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
+    Pedido pedido1 = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
 
     // instanciando detalle pedido
     DetallePedido dp1 = new DetallePedido(2, 5000.0);
     DetallePedido dp2 = new DetallePedido(1, 999.9);
+    dp1.setPedido(pedido1);
+    dp2.setPedido(pedido1);
+
     entityManager.persist(dp1);
     entityManager.persist(dp2);
 
@@ -54,12 +57,11 @@ try {
     entityManager.persist(factura);
 
 
-    pedido.getDetallePedidos().add(dp1);
-    pedido.getDetallePedidos().add(dp2);
-    pedido.setFactura(factura);
+
+    pedido1.setFactura(factura);
 
 
-    entityManager.persist(pedido);
+    entityManager.persist(pedido1);
 
 
     Pais pais1 = new Pais("Argentina");

@@ -23,9 +23,6 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "fk_factura")
     private Factura factura;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();
-
 
     // Atributos
     private LocalTime horaEstimadaFinalizacion;
@@ -59,13 +56,6 @@ public class Pedido implements Serializable {
 
     public Long getId() {
         return id;
-    }
-    public List<DetallePedido> getDetallePedidos() {
-        return detallePedidos;
-    }
-
-    public void setDetallePedidos(List<DetallePedido> detallePedidos) {
-        this.detallePedidos = detallePedidos;
     }
 
     public Factura getFactura() {

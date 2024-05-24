@@ -15,11 +15,22 @@ public class DetallePedido implements Serializable {
     private Integer cantidad;
     private Double subTotal;
 
+    //Relaciones
+    @OneToMany
+    @JoinColumn(name = "fk_pedido")
+    private Pedido pedido;
+
     // Constructores
 
     public DetallePedido(Integer cantidad, Double subTotal) {
         this.cantidad = cantidad;
         this.subTotal = subTotal;
+    }
+
+    public DetallePedido(Integer cantidad, Double subTotal, Pedido pedido) {
+        this.cantidad = cantidad;
+        this.subTotal = subTotal;
+        this.pedido = pedido;
     }
 
     // Getter´s and Setter´s
@@ -40,5 +51,13 @@ public class DetallePedido implements Serializable {
 
     public void setSubTotal(Double subTotal) {
         this.subTotal = subTotal;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }
