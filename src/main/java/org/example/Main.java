@@ -72,7 +72,7 @@ try {
     Empresa empresa1 = new Empresa("Pan","Vender Ricos Panes", 123231123);
 
 
-    empresa1.agregarSucursal(panaderia);
+
     panaderia.setEmpresaCentral(empresa1);
 
     entityManager.persist(pais1);
