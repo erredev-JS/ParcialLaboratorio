@@ -19,25 +19,16 @@ public class Empresa implements Serializable {
 
     private Integer cuil;
 
-    // Relaciones
-    @OneToMany(mappedBy = "empresaCentral",cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Sucursal> sucursalArrayList;
 
     //  Constructores
 
     public Empresa(String nombre, String razonSocial, Integer cuil) {
-        this.sucursalArrayList = new ArrayList<>();
         this.nombre = nombre;
         this.razonSocial = razonSocial;
         this.cuil = cuil;
     }
 
-    public Empresa(String nombre, String razonSocial, Integer cuil, ArrayList<Sucursal> sucursalArrayList) {
-        this.sucursalArrayList = sucursalArrayList;
-        this.nombre = nombre;
-        this.razonSocial = razonSocial;
-        this.cuil = cuil;
-    }
+
     // Getter´s and Setter´s
 
     public Long getId(){
@@ -68,18 +59,9 @@ public class Empresa implements Serializable {
         this.cuil = cuil;
     }
 
-    public ArrayList<Sucursal> getSucursalArrayList() {
-        return sucursalArrayList;
-    }
 
-    public void setSucursalArrayList(ArrayList<Sucursal> sucursalArrayList) {
-        this.sucursalArrayList = sucursalArrayList;
-    }
     // Metodos
 
 
-    public void agregarSucursal(Sucursal sucursal){
-        sucursalArrayList.add(sucursal);
-    }
 
 }
