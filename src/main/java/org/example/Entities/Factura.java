@@ -13,8 +13,8 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Long id;
-
     // Atributos
+
 
     private LocalDate fechaFacturacion;
     private Integer mpPaymentId;
