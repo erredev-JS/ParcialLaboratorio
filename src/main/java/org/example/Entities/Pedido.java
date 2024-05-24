@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Pedidos")
+@Table(name = "pedidos")
 public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,6 @@ public class Pedido implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_factura")
     private Factura factura;
-
 
     // Atributos
     private LocalTime horaEstimadaFinalizacion;

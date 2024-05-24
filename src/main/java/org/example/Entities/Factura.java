@@ -11,7 +11,6 @@ import java.time.LocalDate;
 public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
     // Atributos
 

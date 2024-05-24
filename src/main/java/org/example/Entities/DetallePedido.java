@@ -16,7 +16,7 @@ public class DetallePedido implements Serializable {
     private Double subTotal;
 
     //Relaciones
-    @OneToMany
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_pedido")
     private Pedido pedido;
 
