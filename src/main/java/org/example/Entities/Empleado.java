@@ -12,11 +12,11 @@ import java.time.LocalDate;
 public class Empleado implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nombre;
-    private String apellidp;
+    private String apellido;
     private String telefono;
     private String email;
     private LocalDate fechaNacimiento;
@@ -33,9 +33,9 @@ public class Empleado implements Serializable {
     //Constructor
     public Empleado() { }
 
-    public Empleado(String nombre, String apellidp, String telefono, String email, LocalDate fechaNacimiento, Rol rol, UsuarioEmpleado usuarioEmpleado, ImagenEmpleado imagenEmpleado, Sucursal sucursal) {
+    public Empleado(String nombre, String apellido, String telefono, String email, LocalDate fechaNacimiento, Rol rol, UsuarioEmpleado usuarioEmpleado, ImagenEmpleado imagenEmpleado, Sucursal sucursal) {
         this.nombre = nombre;
-        this.apellidp = apellidp;
+        this.apellido = apellido;
         this.telefono = telefono;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
@@ -64,11 +64,11 @@ public class Empleado implements Serializable {
     }
 
     public String getApellidp() {
-        return apellidp;
+        return apellido;
     }
 
     public void setApellidp(String apellidp) {
-        this.apellidp = apellidp;
+        this.apellido = apellidp;
     }
 
     public String getTelefono() {

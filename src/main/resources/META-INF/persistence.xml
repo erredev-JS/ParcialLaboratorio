@@ -14,6 +14,15 @@
         <class>org.example.Entities.Localidad</class>
         <class>org.example.Entities.Provincia</class>
         <class>org.example.Entities.Pais</class>
+        <class>org.example.Entities.Cliente</class>
+        <class>org.example.Entities.Articulo</class>
+        <class>org.example.Entities.Empleado</class>
+        <class>org.example.Entities.ImagenEmpleado</class>
+        <class>org.example.Entities.ImagenCliente</class>
+        <class>org.example.Entities.Promocion</class>
+        <class>org.example.Entities.UsuarioEmpleado</class>
+        <class>org.example.Entities.UsuarioCliente</class>
+
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

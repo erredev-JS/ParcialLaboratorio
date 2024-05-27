@@ -3,6 +3,7 @@ package org.example;
 import org.example.Entities.*;
 import org.example.Entities.enums.Estado;
 import org.example.Entities.enums.FormaPago;
+import org.example.Entities.enums.Rol;
 import org.example.Entities.enums.TipoEnvio;
 
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Main {
-/*
+
     public static void main(String[] args) {
 
 
@@ -20,81 +21,49 @@ public class Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 
-try {
+        try {
 
-    // Ejemplo de profe
+            // Iniciar la transacción
+            entityManager.getTransaction().begin();
 
+            // Crear las entidades necesarias
+            LocalTime lts1 = LocalTime.of(9,0,0);
+            LocalTime lts12 = LocalTime.of(13,0,0);
 
-    // Persistir una nueva entidad Person
-    entityManager.getTransaction().begin();
+            Sucursal se1 =new Sucursal("sucur1",lts1,lts12,false,null,null);
 
-    Persona person = new Persona("Pepe", 25);
+            LocalDate date = LocalDate.of(2024,5,27);
+            UsuarioEmpleado ue1 = new UsuarioEmpleado("1234566","Jorge123");
+            ImagenEmpleado ie1 = new ImagenEmpleado("xxxxxxxximagen");
 
+            Empleado e1 = new Empleado("Jorge","Lolo","1234567890","abcdde@gmail.com",date, Rol.COCINERO,ue1,ie1,se1);
 
-    person.setName("John Doe");
-    person.setAge(30);
+            // Persistir primero la instancia de ImagenEmpleado
+            entityManager.persist(ie1);
 
-    entityManager.persist(person);
+            // Persistir la entidad Empleado
+            entityManager.persist(e1);
 
-    // Hasta aca
-
-
-    // instanciando pedido
-    Pedido pedido = new Pedido(LocalTime.of(8,29), 5999.9, Estado.PENDIENTE, TipoEnvio.DELIVERY, FormaPago.EFECTIVO, LocalDate.of(2004,5,21));
-
-    // instanciando detalle pedido
-    DetallePedido dp1 = new DetallePedido(2, 5000.0);
-    DetallePedido dp2 = new DetallePedido(1, 999.9);
-    entityManager.persist(dp1);
-    entityManager.persist(dp2);
-
-
-    // instanciando factura
-    Factura factura = new Factura(LocalDate.of(2024, 5, 20),10002350, 100000235, "No se que es este espacio", "Plata o plomo", FormaPago.EFECTIVO, 5999.9);
-    entityManager.persist(factura);
+            entityManager.persist(se1);
+            entityManager.persist(ue1);
+            entityManager.persist(ie1);
 
 
-    pedido.getDetallePedidos().add(dp1);
-    pedido.getDetallePedidos().add(dp2);
-    pedido.setFactura(factura);
+            // Confirmar la transacción
+            entityManager.getTransaction().commit();
+
+        } catch (Exception e){
+            // Revertir la transacción en caso de error
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            // Cerrar el EntityManager
+            entityManager.close();
+            entityManagerFactory.close();
+        }
 
 
-    entityManager.persist(pedido);
-
-
-    Pais pais1 = new Pais("Argentina");
-    Provincia provincia1 = new Provincia("Mendoza");
-    Localidad localidad1 = new Localidad("Godoy Cruz", provincia1);
-    Domicilio domicilio1 = new Domicilio("Bernardo Ortiz", 1345, 5501, localidad1);
-    Sucursal panaderia = new Sucursal("Jebbs", LocalTime.of(8,0),LocalTime.of(20,30),false, domicilio1);
-    Empresa empresa1 = new Empresa("Pan","Vender Ricos Panes", 123231123);
-
-
-    empresa1.agregarSucursal(panaderia);
-    panaderia.setEmpresaCentral(empresa1);
-
-    entityManager.persist(pais1);
-    entityManager.persist(provincia1);
-    entityManager.persist(localidad1);
-    entityManager.persist(domicilio1);
-    entityManager.persist(panaderia);
-    entityManager.persist(empresa1);
-
-    entityManager.getTransaction().commit();
-
-
-    // Consultar y mostrar la entidad persistida
-    Persona retrievedPerson = entityManager.find(Persona.class, person.getId());
-    System.out.println("Retrieved Person: " + retrievedPerson.getName());
-
-    }catch (Exception e){
-
-    entityManager.getTransaction().rollback();
-    System.out.println(e.getMessage());
-    System.out.println("No se pudo grabar la clase Persona");}
-
-        // Cerrar el EntityManager y el EntityManagerFactory
-        entityManager.close();
-        entityManagerFactory.close();
-    }*/
+    }
 }

@@ -3,9 +3,10 @@ package org.example.Entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "clientes")
 public class Cliente implements Serializable {
     //Atributos
     @Id
@@ -22,22 +23,22 @@ public class Cliente implements Serializable {
     private UsuarioCliente usuario;
     @OneToOne(cascade = CascadeType.ALL)
     private ImagenCliente imagenCliente;
-    @OneToOne
-    private Domicilio domicilio;
+    @ManyToMany
+    @JoinTable(name = "cliente_domicilio",joinColumns = @JoinColumn(name = "id_cliente"),inverseJoinColumns = @JoinColumn(name = "id_domicilio"))
+    private List<Domicilio> domicilio;
 
     //Constructor
     public Cliente() {
     }
 
-    public Cliente(String nombre, Domicilio domicilio, ImagenCliente imagenCliente, UsuarioCliente usuario, LocalDate fechaNacimiento, String email, String telefono, String apellidp) {
+    public Cliente(String nombre, String apellidp, String telefono, String email, LocalDate fechaNacimiento, UsuarioCliente usuario, ImagenCliente imagenCliente) {
         this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.imagenCliente = imagenCliente;
-        this.usuario = usuario;
-        this.fechaNacimiento = fechaNacimiento;
-        this.email = email;
-        this.telefono = telefono;
         this.apellidp = apellidp;
+        this.telefono = telefono;
+        this.email = email;
+        this.fechaNacimiento = fechaNacimiento;
+        this.usuario = usuario;
+        this.imagenCliente = imagenCliente;
     }
 
     //Getter and Setter
@@ -106,11 +107,11 @@ public class Cliente implements Serializable {
         this.imagenCliente = imagenCliente;
     }
 
-    public Domicilio getDomicilio() {
+    public List<Domicilio> getDomicilio() {
         return domicilio;
     }
 
-    public void setDomicilio(Domicilio domicilio) {
+    public void setDomicilio(List<Domicilio> domicilio) {
         this.domicilio = domicilio;
     }
 }

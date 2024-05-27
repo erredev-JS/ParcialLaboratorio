@@ -50,8 +50,7 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(Long id, Factura factura, LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido, Empleado empleado, Cliente cliente, Sucursal sucursal) {
-        this.id = id;
+    public Pedido( Factura factura, LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido, Empleado empleado, Cliente cliente, Sucursal sucursal) {
         this.factura = factura;
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
         this.total = total;
