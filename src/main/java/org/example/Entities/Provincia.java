@@ -9,17 +9,18 @@ import java.io.Serializable;
 public class Provincia implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
-
     private Long id;
 
     // Atributos
-
     private String nombre;
 
-    // Relaciones
-    @OneToOne(cascade = CascadeType.ALL)
+    // Relacione
+    //VEr esta parte
+    @ManyToOne
     @JoinColumn(name = "fk_pais")
     private Pais pais;
+
+
 
     // Constructores
 

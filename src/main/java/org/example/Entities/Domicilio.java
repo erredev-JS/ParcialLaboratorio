@@ -13,25 +13,22 @@ public class Domicilio implements Serializable {
     private Long id;
 
     // Atributos
-
     private String calle;
     private Integer numero;
     private Integer cp;
 
     // Relaciones
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "fk_localidad")
     private Localidad localidad;
 
     // Constructores
-
     public Domicilio(String calle, Integer numero, Integer cp, Localidad localidad) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
         this.localidad = localidad;
     }
-
     // Getter´s and Setter´s
 
     public Long getId() {

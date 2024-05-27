@@ -23,29 +23,35 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "fk_factura")
     private Factura factura;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();
-
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();*/
 
     // Atributos
     private LocalTime horaEstimadaFinalizacion;
     private Double total;
+    @Enumerated(EnumType.STRING)
     private Estado estado;
+    @Enumerated(EnumType.STRING)
     private TipoEnvio tipoEnvio;
+    @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
-    // Constructores
-    public Pedido(LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido) {
-        this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
-        this.total = total;
-        this.estado = estado;
-        this.tipoEnvio = tipoEnvio;
-        this.formaPago = formaPago;
-        this.fechaPedido = fechaPedido;
+    @ManyToOne
+    private Empleado empleado;
+    @ManyToOne
+    private Cliente cliente;
+    @ManyToOne
+    private Sucursal sucursal;
+    /*@ManyToOne
+    private Domicilio domicilio;*/
+
+    //Constructor
+    public Pedido() {
     }
 
-    public Pedido(Factura factura, LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido) {
+    public Pedido(Long id, Factura factura, LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido, Empleado empleado, Cliente cliente, Sucursal sucursal) {
+        this.id = id;
         this.factura = factura;
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
         this.total = total;
@@ -53,19 +59,19 @@ public class Pedido implements Serializable {
         this.tipoEnvio = tipoEnvio;
         this.formaPago = formaPago;
         this.fechaPedido = fechaPedido;
+        this.empleado = empleado;
+        this.cliente = cliente;
+        this.sucursal = sucursal;
     }
 
-    // Getter´s and Setter´s
+    //Getter and Setter
 
     public Long getId() {
         return id;
     }
-    public List<DetallePedido> getDetallePedidos() {
-        return detallePedidos;
-    }
 
-    public void setDetallePedidos(List<DetallePedido> detallePedidos) {
-        this.detallePedidos = detallePedidos;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Factura getFactura() {
@@ -122,5 +128,29 @@ public class Pedido implements Serializable {
 
     public void setFechaPedido(LocalDate fechaPedido) {
         this.fechaPedido = fechaPedido;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 }

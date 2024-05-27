@@ -12,19 +12,14 @@ public class Pais implements Serializable {
     private Long id;
 
     // Atributos
-
     private String nombre;
 
     // Constructores
-
-
     public Pais(String nombre) {
         this.nombre = nombre;
     }
 
     // Getter´s and Setter´s
-
-
     public Long getId() {
         return id;
     }

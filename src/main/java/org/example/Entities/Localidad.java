@@ -8,20 +8,17 @@ import java.io.Serializable;
 public class Localidad implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
 
     // Atributos
-
     private String nombre;
 
     // Relaciones
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "fk_provincia")
     private Provincia provincia;
 
     // Constructores
-
     public Localidad(String nombre, Provincia provincia) {
         this.nombre = nombre;
         this.provincia = provincia;

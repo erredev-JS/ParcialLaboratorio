@@ -11,35 +11,38 @@ import java.time.LocalDate;
 public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    // Atributos
-
 
     private LocalDate fechaFacturacion;
     private Integer mpPaymentId;
     private Integer mpMerchantOrderId;
     private String mpPreferenceId;
     private String mpPaymentType;
+    @Enumerated
     private FormaPago formaPago;
     private Double totalVenta;
 
     // Constructores
+    public Factura() {
+    }
 
-    public Factura(LocalDate fechaFacturacion, Integer mpPaymentId, Integer mpMerchantOrderId, String mpPreferenceId, String mpPaymentType, FormaPago formaPago, Double totalVenta) {
+    public Factura(LocalDate fechaFacturacion, Integer mpPaymentId, Integer mpMerchantOrderId, String mpPreferenceId, FormaPago formaPago, String mpPaymentType, Double totalVenta) {
         this.fechaFacturacion = fechaFacturacion;
         this.mpPaymentId = mpPaymentId;
         this.mpMerchantOrderId = mpMerchantOrderId;
         this.mpPreferenceId = mpPreferenceId;
-        this.mpPaymentType = mpPaymentType;
         this.formaPago = formaPago;
+        this.mpPaymentType = mpPaymentType;
         this.totalVenta = totalVenta;
     }
 
-    // Getter´s and Setter´s
-
+    //Getter and Setter
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDate getFechaFacturacion() {

@@ -6,42 +6,34 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "Empresa")
-public class Empresa implements Serializable {
+public class Empresa implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
 
     // Atributos
-
     private String nombre;
     private String razonSocial;
-
     private Integer cuil;
 
-    // Relaciones
-    @OneToMany(mappedBy = "empresaCentral",cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Sucursal> sucursalArrayList;
-
     //  Constructores
+    public Empresa() {
+    }
 
-    public Empresa(String nombre, String razonSocial, Integer cuil) {
-        this.sucursalArrayList = new ArrayList<>();
+    public Empresa(Long id, String nombre, String razonSocial, Integer cuil) {
+        this.id = id;
         this.nombre = nombre;
         this.razonSocial = razonSocial;
         this.cuil = cuil;
     }
+    //Getter and Setter
 
-    public Empresa(String nombre, String razonSocial, Integer cuil, ArrayList<Sucursal> sucursalArrayList) {
-        this.sucursalArrayList = sucursalArrayList;
-        this.nombre = nombre;
-        this.razonSocial = razonSocial;
-        this.cuil = cuil;
-    }
-    // Getter´s and Setter´s
-
-    public Long getId(){
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -67,19 +59,4 @@ public class Empresa implements Serializable {
     public void setCuil(Integer cuil) {
         this.cuil = cuil;
     }
-
-    public ArrayList<Sucursal> getSucursalArrayList() {
-        return sucursalArrayList;
-    }
-
-    public void setSucursalArrayList(ArrayList<Sucursal> sucursalArrayList) {
-        this.sucursalArrayList = sucursalArrayList;
-    }
-    // Metodos
-
-
-    public void agregarSucursal(Sucursal sucursal){
-        sucursalArrayList.add(sucursal);
-    }
-
 }
