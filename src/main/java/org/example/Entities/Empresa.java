@@ -22,6 +22,7 @@ public class Empresa implements Serializable {
 
     //  Constructores
 
+
     public Empresa(String nombre, String razonSocial, Integer cuil) {
         this.nombre = nombre;
         this.razonSocial = razonSocial;
