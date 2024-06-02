@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
  @Entity
- @Table(name = "Imagen Promocion")
+ @Table(name = "ImagenPromocion")
 public class ImagenPromocion implements Serializable {
     //Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "Denominacion")
     private String denominacion;

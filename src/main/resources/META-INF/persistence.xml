@@ -5,30 +5,42 @@
              version="2.2">
     <persistence-unit name="example-unit" transaction-type="RESOURCE_LOCAL">
         <class>org.example.Persona</class>
-        <class>org.example.Entities.Cliente</class>
+
         <class>org.example.Entities.DetallePedido</class>
         <class>org.example.Entities.Domicilio</class>
         <class>org.example.Entities.Empleado</class>
         <class>org.example.Entities.Empresa</class>
         <class>org.example.Entities.Factura</class>
-        <class>org.example.Entities.ImagenCliente</class>
-        <class>org.example.Entities.ImagenEmpleado</class>
         <class>org.example.Entities.Localidad</class>
         <class>org.example.Entities.Pais</class>
         <class>org.example.Entities.Pedido</class>
         <class>org.example.Entities.Provincia</class>
         <class>org.example.Entities.Sucursal</class>
-        <class>org.example.Entities.UsuarioCliente</class>
-        <class>org.example.Entities.UsuarioEmpleado</class>
+        <class>org.example.Entities.Promocion</class>
+        <class>org.example.Entities.ImagenPromocion</class>
+        <class>org.example.Entities.PromocionDetalle</class>
+
+
 
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
-            <property name="javax.persistence.jdbc.user" value="sa"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <!-- <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/> -->
+           <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/test"/>
+
+           <property name="hibernate.connection.driver_class" value = "org.h2.Driver"/>
+           <property name="hibernate.connection.username" value="sa"/>
+           <property name="hibernate.connection.password" value =""/>
+           <!--
+           <property name="javax.persistence.jdbc.user" value="sa"/>
+           <property name="javax.persistence.jdbc.password" value=""/>
+           -->
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <property name="hibernate.connection.autocommit" value = "false"/>
+
+
         </properties>
     </persistence-unit>
 </persistence>

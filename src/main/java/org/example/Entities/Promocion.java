@@ -18,22 +18,22 @@ public class Promocion implements Serializable {
 
     @Column(name="Denominacion")
     private String denominacion;
-    @Column(name="Fecha desde")
+    @Column(name="FechaDesde")
     private LocalDate FechaDesde;
-    @Column(name="Fecha hasta")
+    @Column(name="FechaHasta")
     private LocalDate FechaHasta;
-    @Column(name="Hora desde")
+    @Column(name="HoraDesde")
     private LocalTime HoraDesde;
-    @Column(name="Hora hasta")
+    @Column(name="HoraHasta")
     private LocalTime HoraHasta;
-    @Column(name="Descripcion descuento")
+    @Column(name="DescripcionDescuento")
     private String descripcionDescuento;
-    @Column(name="Precio promocional")
+    @Column(name="PrecioPromocional")
     private Double precioPromocional;
-    @Column(name = "Tipo promocion")
+    @Column(name = "TipoPromocion")
     private TipoPromocion tipoPromocion;
 
-    //Constructores
+    // Constructores
 
     public Promocion() {
     }
