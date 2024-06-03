@@ -65,7 +65,7 @@ try {
 
 
     Pais pais1 = new Pais("Argentina");
-    Provincia provincia1 = new Provincia("Mendoza");
+    Provincia provincia1 = new Provincia("Mendoza", pais1);
     Localidad localidad1 = new Localidad("Godoy Cruz", provincia1);
     Domicilio domicilio1 = new Domicilio("Bernardo Ortiz", 1345, 5501, localidad1);
     Sucursal panaderia = new Sucursal("Jebbs", LocalTime.of(8,0),LocalTime.of(20,30),false, domicilio1);
