@@ -1,5 +1,7 @@
 package org.example.Entities;
 
+import org.example.Entities.enums.Rol;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -17,32 +19,38 @@ public class Cliente implements Serializable {
     private String telefono;
     private String email;
     private LocalDate fechaNacimiento;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     //Relaciones
     @OneToOne(cascade = CascadeType.ALL)
     private UsuarioCliente usuario;
     @OneToOne(cascade = CascadeType.ALL)
     private ImagenCliente imagenCliente;
-    @ManyToMany
-    @JoinTable(name = "cliente_domicilio",joinColumns = @JoinColumn(name = "id_cliente"),inverseJoinColumns = @JoinColumn(name = "id_domicilio"))
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinTable(
+            name = "cliente_domicilio",
+            joinColumns = @JoinColumn(name = "id_cliente"),
+            inverseJoinColumns = @JoinColumn(name = "id_domicilio"))
     private List<Domicilio> domicilio;
 
     //Constructor
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellidp, String telefono, String email, LocalDate fechaNacimiento, UsuarioCliente usuario, ImagenCliente imagenCliente) {
+    public Cliente(String nombre, String apellidp, String telefono, String email, LocalDate fechaNacimiento, Rol rol, UsuarioCliente usuario, List<Domicilio> domicilio, ImagenCliente imagenCliente) {
         this.nombre = nombre;
         this.apellidp = apellidp;
         this.telefono = telefono;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
+        this.rol = rol;
         this.usuario = usuario;
+        this.domicilio = domicilio;
         this.imagenCliente = imagenCliente;
     }
 
     //Getter and Setter
-
     public Long getId() {
         return id;
     }
@@ -67,6 +75,14 @@ public class Cliente implements Serializable {
         this.apellidp = apellidp;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -75,12 +91,12 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public LocalDate getFechaNacimiento() {

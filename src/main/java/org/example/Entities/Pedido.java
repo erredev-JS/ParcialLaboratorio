@@ -12,23 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Pedidos")
+@Table(name = "pedidos")
 public class Pedido implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //Relaciones
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_factura")
-    private Factura factura;
-
-    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();*/
 
     // Atributos
     private LocalTime horaEstimadaFinalizacion;
     private Double total;
+    private Double totalCosto;
     @Enumerated(EnumType.STRING)
     private Estado estado;
     @Enumerated(EnumType.STRING)
@@ -37,48 +30,49 @@ public class Pedido implements Serializable {
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
-    @ManyToOne
+    // Relaciones
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_factura")
+    private Factura factura;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_empleado")
     private Empleado empleado;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_sucursal")
     private Sucursal sucursal;
-    /*@ManyToOne
-    private Domicilio domicilio;*/
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_domicilio")
+    private Domicilio domicilio;
 
     //Constructor
     public Pedido() {
     }
 
-    public Pedido( Factura factura, LocalTime horaEstimadaFinalizacion, Double total, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido, Empleado empleado, Cliente cliente, Sucursal sucursal) {
-        this.factura = factura;
+    public Pedido(LocalTime horaEstimadaFinalizacion, Double total, Double totalCosto, Estado estado, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido, Factura factura, Empleado empleado, Cliente cliente, Sucursal sucursal, Domicilio domicilio) {
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
         this.total = total;
+        this.totalCosto = totalCosto;
         this.estado = estado;
         this.tipoEnvio = tipoEnvio;
         this.formaPago = formaPago;
         this.fechaPedido = fechaPedido;
+        this.factura = factura;
         this.empleado = empleado;
         this.cliente = cliente;
         this.sucursal = sucursal;
+        this.domicilio = domicilio;
     }
 
-    //Getter and Setter
-
+    //Getter ans Setter
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Factura getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Factura factura) {
-        this.factura = factura;
     }
 
     public LocalTime getHoraEstimadaFinalizacion() {
@@ -95,6 +89,14 @@ public class Pedido implements Serializable {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Double getTotalCosto() {
+        return totalCosto;
+    }
+
+    public void setTotalCosto(Double totalCosto) {
+        this.totalCosto = totalCosto;
     }
 
     public Estado getEstado() {
@@ -129,6 +131,14 @@ public class Pedido implements Serializable {
         this.fechaPedido = fechaPedido;
     }
 
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+
     public Empleado getEmpleado() {
         return empleado;
     }
@@ -143,6 +153,14 @@ public class Pedido implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
     }
 
     public Sucursal getSucursal() {

@@ -6,10 +6,10 @@ import java.io.Serializable;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "Domicilio")
+@Table(name = "Domicilios")
 public class Domicilio implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Atributos
@@ -18,7 +18,7 @@ public class Domicilio implements Serializable {
     private Integer cp;
 
     // Relaciones
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "fk_localidad")
     private Localidad localidad;
 

@@ -5,18 +5,17 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "Provincia")
+@Table(name = "Provincias")
 public class Provincia implements Serializable {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
     // Atributos
     private String nombre;
 
     // Relacione
-    //VEr esta parte
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "fk_pais")
     private Pais pais;
 

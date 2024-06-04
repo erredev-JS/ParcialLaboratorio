@@ -5,10 +5,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "Empresa")
+@Table(name = "Empresas")
 public class Empresa implements Serializable  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Atributos
@@ -20,8 +20,7 @@ public class Empresa implements Serializable  {
     public Empresa() {
     }
 
-    public Empresa(Long id, String nombre, String razonSocial, Integer cuil) {
-        this.id = id;
+    public Empresa(String nombre, String razonSocial, Integer cuil) {
         this.nombre = nombre;
         this.razonSocial = razonSocial;
         this.cuil = cuil;

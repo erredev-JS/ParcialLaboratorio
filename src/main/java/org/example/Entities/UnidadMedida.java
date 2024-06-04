@@ -4,29 +4,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "imagenes_empleados")
-public class ImagenEmpleado implements Serializable {
+@Table(name = "unidades_medidas")
+public class UnidadMedida implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String denominacion;
 
     //Constructor
-    public ImagenEmpleado(String denominacion) {
+    public UnidadMedida(String denominacion) {
         this.denominacion = denominacion;
     }
 
-    //Getter and Setter
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    //Getter and setter
     public String getDenominacion() {
         return denominacion;
     }
@@ -34,4 +25,5 @@ public class ImagenEmpleado implements Serializable {
     public void setDenominacion(String denominacion) {
         this.denominacion = denominacion;
     }
+
 }

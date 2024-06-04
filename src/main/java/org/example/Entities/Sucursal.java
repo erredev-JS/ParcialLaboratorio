@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Sucursal")
+@Table(name = "Sucursales")
 public class Sucursal implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Atributos
@@ -25,31 +24,36 @@ public class Sucursal implements Serializable {
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilioSucursal;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fk_empresaCentral")
+    @JoinColumn(name = "fk_empresa")
     private Empresa empresaCentral;
     @ManyToMany
-    @JoinTable(name = "sucursal_promos", joinColumns = @JoinColumn(name = "sucursal"),inverseJoinColumns = @JoinColumn(name = "promos"))
+    @JoinTable(
+            name = "sucursal_promos",
+            joinColumns = @JoinColumn(name = "sucursal"),
+            inverseJoinColumns = @JoinColumn(name = "promos"))
     private List<Promocion> promos;
-    /*
     @ManyToMany
-    @JoinTable(name = "sucursal_promos", joinColumns = @JoinColumn(name = "sucursal"),inverseJoinColumns = @JoinColumn(name = "promos"))
+    @JoinTable(
+            name = "sucursal_categorias",
+            joinColumns = @JoinColumn(name = "fk_sucursal"),
+            inverseJoinColumns = @JoinColumn(name = "fk_categoria"))
     private List<Categoria> categorias;
-    */
+
 
     // Constructores
 
-    public Sucursal(String nombre, LocalTime horarioApertura, LocalTime horarioCierre, Boolean casaMatriz, Domicilio domicilioSucursal, Empresa empresaCentral) {
-        this.nombre = nombre;
+    public Sucursal(String nombre, LocalTime horarioApertura, LocalTime horarioCierre, Boolean casaMatriz, Domicilio domicilioSucursal, Empresa empresaCentral, List<Promocion> promos, List<Categoria> categorias) {
         this.horarioApertura = horarioApertura;
+        this.nombre = nombre;
         this.horarioCierre = horarioCierre;
         this.casaMatriz = casaMatriz;
         this.domicilioSucursal = domicilioSucursal;
         this.empresaCentral = empresaCentral;
-        this.promos = new ArrayList<>();
+        this.promos = promos;
+        this.categorias = categorias;
     }
 
     //Getter and Setter
-
     public Long getId() {
         return id;
     }
@@ -66,6 +70,14 @@ public class Sucursal implements Serializable {
         this.nombre = nombre;
     }
 
+    public LocalTime getHorarioCierre() {
+        return horarioCierre;
+    }
+
+    public void setHorarioCierre(LocalTime horarioCierre) {
+        this.horarioCierre = horarioCierre;
+    }
+
     public LocalTime getHorarioApertura() {
         return horarioApertura;
     }
@@ -80,14 +92,6 @@ public class Sucursal implements Serializable {
 
     public void setCasaMatriz(Boolean casaMatriz) {
         this.casaMatriz = casaMatriz;
-    }
-
-    public LocalTime getHorarioCierre() {
-        return horarioCierre;
-    }
-
-    public void setHorarioCierre(LocalTime horarioCierre) {
-        this.horarioCierre = horarioCierre;
     }
 
     public Domicilio getDomicilioSucursal() {
@@ -112,5 +116,13 @@ public class Sucursal implements Serializable {
 
     public void setPromos(List<Promocion> promos) {
         this.promos = promos;
+    }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }

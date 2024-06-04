@@ -3,7 +3,7 @@ package org.example.Entities;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-@Table(name = "imagen_cliente")
+@Table(name = "imagen_clientes")
 public class ImagenCliente  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name = "Facturas")
 public class Factura implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDate fechaFacturacion;
@@ -18,7 +18,7 @@ public class Factura implements Serializable {
     private Integer mpMerchantOrderId;
     private String mpPreferenceId;
     private String mpPaymentType;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
     private Double totalVenta;
 

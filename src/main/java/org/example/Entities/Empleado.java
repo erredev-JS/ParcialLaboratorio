@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Empleado implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -20,14 +20,16 @@ public class Empleado implements Serializable {
     private String telefono;
     private String email;
     private LocalDate fechaNacimiento;
-
-    @Enumerated
+    //RElaciones
+    @Enumerated(EnumType.STRING)
     private Rol rol;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_usuarioEmpleado")
     private UsuarioEmpleado usuarioEmpleado;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_imagenEmpleado")
     private ImagenEmpleado imagenEmpleado;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private Sucursal sucursal;
 
     //Constructor

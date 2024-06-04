@@ -4,21 +4,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "imagenes_empleados")
-public class ImagenEmpleado implements Serializable {
+@Table(name = "imagenes_promos")
+public class ImagenPromocion implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String denominacion;
 
     //Constructor
-    public ImagenEmpleado(String denominacion) {
+    public ImagenPromocion(String denominacion) {
         this.denominacion = denominacion;
     }
 
     //Getter and Setter
-
     public Long getId() {
         return id;
     }

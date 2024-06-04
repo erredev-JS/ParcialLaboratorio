@@ -4,34 +4,51 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "DetallePedidos")
+@Table(name = "detallePedidos")
 public class DetallePedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Atributos
-
     private Integer cantidad;
     private Double subTotal;
 
     //Relaciones
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_pedido")
     private Pedido pedido;
-    @ManyToOne Articulo articulo;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_articulo")
+    private Articulo articulo;
 
     // Constructores
     public DetallePedido() {
     }
 
-    public DetallePedido(Integer cantidad, Double subTotal, Pedido pedido, Articulo articulo) {
-        this.cantidad = cantidad;
+    public DetallePedido(Double subTotal, Integer cantidad, Pedido pedido, Articulo articulo) {
         this.subTotal = subTotal;
+        this.cantidad = cantidad;
         this.pedido = pedido;
         this.articulo = articulo;
     }
 
-    //Getter and setter
+    //Getter and Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public Double getSubTotal() {
         return subTotal;
@@ -55,21 +72,5 @@ public class DetallePedido implements Serializable {
 
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
