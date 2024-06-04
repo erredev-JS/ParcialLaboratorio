@@ -10,8 +10,13 @@ repositories {
 }
 
 dependencies {
+    // JPA API
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0'
+
+    // Hibernate ORM
     implementation 'org.hibernate:hibernate-core:5.5.7.Final'
-    // Otras dependencias
+
+    // H2 Database (para pruebas)
     implementation 'com.h2database:h2:1.4.200'
     runtimeOnly 'com.h2database:h2:1.4.200'
 }

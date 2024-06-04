@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Table(name = "Provincias")
 public class Provincia implements Serializable {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
     // Atributos

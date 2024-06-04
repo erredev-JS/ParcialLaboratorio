@@ -9,7 +9,7 @@ import java.time.LocalTime;
 @Table(name = "Domicilios")
 public class Domicilio implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     // Atributos

@@ -16,12 +16,21 @@
         <class>org.example.Entities.Pais</class>
         <class>org.example.Entities.Cliente</class>
         <class>org.example.Entities.Articulo</class>
+        <class>org.example.Entities.ImagenArticulo</class>
+        <class>org.example.Entities.UnidadMedida</class>
+        <class>org.example.Entities.ArticuloInsumo</class>
+        <class>org.example.Entities.ArticuloManufacturado</class>
+        <class>org.example.Entities.ArticuloManufacturadoDetalle</class>
         <class>org.example.Entities.Empleado</class>
         <class>org.example.Entities.ImagenEmpleado</class>
         <class>org.example.Entities.ImagenCliente</class>
         <class>org.example.Entities.Promocion</class>
         <class>org.example.Entities.UsuarioEmpleado</class>
         <class>org.example.Entities.UsuarioCliente</class>
+        <class>org.example.Entities.Categoria</class>
+        <class>org.example.Entities.ImagenPromocion</class>
+        <class>org.example.Entities.PromocionDetalle</class>
+
 
 
         <properties>
@@ -30,7 +39,7 @@
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>

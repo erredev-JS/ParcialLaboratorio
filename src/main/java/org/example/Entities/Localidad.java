@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "Localidades")
 public class Localidad implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     // Atributos
