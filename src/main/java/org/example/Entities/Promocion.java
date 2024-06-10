@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name="Promocion")
@@ -13,7 +14,7 @@ public class Promocion implements Serializable {
     //Atributos
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name="Denominacion")
@@ -32,9 +33,9 @@ public class Promocion implements Serializable {
     private Double precioPromocional;
     @Column(name = "TipoPromocion")
     private TipoPromocion tipoPromocion;
-    //Relacion
+    // Relacion
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-    private PromocionDetalle promocionDetalle;
+    private List<PromocionDetalle> promocionDetalle;
 
     // Constructores
 
@@ -52,7 +53,7 @@ public class Promocion implements Serializable {
         this.tipoPromocion = tipoPromocion;
     }
 
-    public Promocion(String denominacion, LocalDate fechaDesde, LocalDate fechaHasta, LocalTime horaDesde, LocalTime horaHasta, String descripcionDescuento, Double precioPromocional, TipoPromocion tipoPromocion, PromocionDetalle promocionDetalle) {
+    public Promocion(String denominacion, LocalDate fechaDesde, LocalDate fechaHasta, LocalTime horaDesde, LocalTime horaHasta, String descripcionDescuento, Double precioPromocional, TipoPromocion tipoPromocion, List<PromocionDetalle> promocionDetalle) {
         this.denominacion = denominacion;
         FechaDesde = fechaDesde;
         FechaHasta = fechaHasta;
@@ -70,11 +71,11 @@ public class Promocion implements Serializable {
         return id;
     }
 
-    public PromocionDetalle getPromocionDetalle() {
-        return promocionDetalle;
+    public  List<PromocionDetalle> getPromocionDetalle(){
+        return this.promocionDetalle;
     }
 
-    public void setPromocionDetalle(PromocionDetalle promocionDetalle) {
+    public void setPromocionDetalle( List<PromocionDetalle> promocionDetalle) {
         this.promocionDetalle = promocionDetalle;
     }
 

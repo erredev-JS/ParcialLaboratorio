@@ -73,7 +73,7 @@ try {
     Empresa empresa1 = new Empresa("Pan","Vender Ricos Panes", 123231123);
     Promocion promocion1=new Promocion("50% OFF la segunda docena",LocalDate.of(2024,6,1),LocalDate.of(2024,7,1),LocalTime.parse("08:00:00"), LocalTime.parse("08:00:00"),"Llevando dos docenas de facturas la segunda docena tiene un descuento del 50%",1500.0, TipoPromocion.PROMOCION);
     PromocionDetalle promocionDetalle1 = new PromocionDetalle(30);
-    ImagenPromocion imagenPromocion1=new ImagenPromocion();
+    ImagenPromocion imagenPromocion1=new ImagenPromocion("adaa",promocion1);
 
 
 

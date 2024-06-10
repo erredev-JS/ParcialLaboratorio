@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class PromocionDetalle {
     //Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "Cantidad")
     private int cantidad;
