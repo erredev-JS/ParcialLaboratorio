@@ -11,10 +11,15 @@ public class PromocionDetalle {
     private Long id;
     @Column(name = "Cantidad")
     private int cantidad;
-    //Constructor
+
+    //Constructores
+
+    public PromocionDetalle() {
+    }
     public PromocionDetalle(int cantidad) {
         this.cantidad = cantidad;
     }
+
     //Getter y setter
 
     public Long getId() {

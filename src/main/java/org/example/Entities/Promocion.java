@@ -32,6 +32,9 @@ public class Promocion implements Serializable {
     private Double precioPromocional;
     @Column(name = "TipoPromocion")
     private TipoPromocion tipoPromocion;
+    //Relacion
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    private PromocionDetalle promocionDetalle;
 
     // Constructores
 
@@ -49,10 +52,30 @@ public class Promocion implements Serializable {
         this.tipoPromocion = tipoPromocion;
     }
 
+    public Promocion(String denominacion, LocalDate fechaDesde, LocalDate fechaHasta, LocalTime horaDesde, LocalTime horaHasta, String descripcionDescuento, Double precioPromocional, TipoPromocion tipoPromocion, PromocionDetalle promocionDetalle) {
+        this.denominacion = denominacion;
+        FechaDesde = fechaDesde;
+        FechaHasta = fechaHasta;
+        HoraDesde = horaDesde;
+        HoraHasta = horaHasta;
+        this.descripcionDescuento = descripcionDescuento;
+        this.precioPromocional = precioPromocional;
+        this.tipoPromocion = tipoPromocion;
+        this.promocionDetalle = promocionDetalle;
+    }
+
     //Getter y setter
 
     public Long getId() {
         return id;
+    }
+
+    public PromocionDetalle getPromocionDetalle() {
+        return promocionDetalle;
+    }
+
+    public void setPromocionDetalle(PromocionDetalle promocionDetalle) {
+        this.promocionDetalle = promocionDetalle;
     }
 
     public String getDenominacion() {

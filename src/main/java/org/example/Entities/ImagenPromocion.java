@@ -12,6 +12,10 @@ public class ImagenPromocion implements Serializable {
     private Long id;
     @Column(name = "Denominacion")
     private String denominacion;
+    //Relacion
+     @ManyToOne(cascade = CascadeType.PERSIST)
+     @JoinColumn(name = "fk_promocion")
+    private Promocion promocion;
     //Constructor
 
      public ImagenPromocion() {
@@ -20,10 +24,23 @@ public class ImagenPromocion implements Serializable {
      public ImagenPromocion(String denominacion) {
         this.denominacion = denominacion;
     }
-    //Getter y setter
+
+     public ImagenPromocion(String denominacion, Promocion promocion) {
+         this.denominacion = denominacion;
+         this.promocion = promocion;
+     }
+     //Getter y setter
 
      public Long getId() {
          return id;
+     }
+
+     public Promocion getPromocion() {
+         return promocion;
+     }
+
+     public void setPromocion(Promocion promocion) {
+         this.promocion = promocion;
      }
 
      public String getDenominacion() {
