@@ -4,6 +4,7 @@ import org.example.Entities.*;
 import org.example.Entities.enums.Estado;
 import org.example.Entities.enums.FormaPago;
 import org.example.Entities.enums.TipoEnvio;
+import org.example.Entities.enums.TipoPromocion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -70,6 +71,10 @@ try {
     Domicilio domicilio1 = new Domicilio("Bernardo Ortiz", 1345, 5501, localidad1);
     Sucursal panaderia = new Sucursal("Jebbs", LocalTime.of(8,0),LocalTime.of(20,30),false, domicilio1);
     Empresa empresa1 = new Empresa("Pan","Vender Ricos Panes", 123231123);
+    Promocion promocion1=new Promocion("50% OFF la segunda docena",LocalDate.of(2024,6,1),LocalDate.of(2024,7,1),LocalTime.parse("08:00:00"), LocalTime.parse("08:00:00"),"Llevando dos docenas de facturas la segunda docena tiene un descuento del 50%",1500.0, TipoPromocion.PROMOCION);
+    PromocionDetalle promocionDetalle1 = new PromocionDetalle(30);
+    ImagenPromocion imagenPromocion1=new ImagenPromocion();
+
 
 
 
@@ -81,6 +86,9 @@ try {
     entityManager.persist(domicilio1);
     entityManager.persist(panaderia);
     entityManager.persist(empresa1);
+    entityManager.persist(promocion1);
+    entityManager.persist(promocionDetalle1);
+    entityManager.persist(imagenPromocion1);
 
     entityManager.getTransaction().commit();
 
